@@ -52,8 +52,8 @@
 
 .start-time, .last-30secs {
   /* text-align: center; */
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 65px;
+  font-weight: 100px;
   margin-bottom: 0em;
   color: rgb(170, 0, 170);
   background-color: #ecf0f3;

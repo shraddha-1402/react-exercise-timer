@@ -16,7 +16,7 @@ class App extends React.Component {
       snd: new Audio(`${window.location.origin}/bell_ring.mp3`),
       cssClass: "start-time",
       secondTimer: true,
-      showClock: false,
+      showPause: false,
       timerId: 0
     }
   }
@@ -101,7 +101,7 @@ class App extends React.Component {
           this.decrement();
         } else {
           this.setState({
-            showClock: false,
+            showPause: false,
             displayMins: 0,
             displaySecs: 0,
             secondTimer: true,
@@ -118,7 +118,7 @@ class App extends React.Component {
     this.state.snd.play();
   }
 
-  startTimer = () => {
+  startTimer() {
     // console.log(window.location.origin)
     // var snd = ;
     if (this.state.calSecs > 0
@@ -140,14 +140,26 @@ class App extends React.Component {
               displaySecs={this.state.displaySecs}
             /> 
         <InputFields handleChange={this.handleChange} />
-        <button
+        {!this.state.showPause && <button
           className="start-button"
-          onClick={this.startTimer}>Start
-        </button>
-            <button
-              className="start-button"
-              onClick={()=>clearInterval(this.state.timerId)}>Pause
-            </button> 
+          onClick={()=> {
+            this.startTimer()
+            this.setState({
+              showPause: true
+              })
+          } }>
+          Start
+        </button>}
+        {this.state.showPause && <button
+          className="start-button"
+          onClick={()=>{
+            clearInterval(this.state.timerId)
+            this.setState({
+              showPause: false
+            })
+          }}>
+            Pause
+        </button> }
         {/* {this.state.showClock &&
           <React.Fragment>
             <Clock
