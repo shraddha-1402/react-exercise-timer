@@ -1,27 +1,32 @@
 import React from 'react';
 import '../App.css';
 
-const InputFields = ({ handleChange }) => {
+const InputFields = ({name, handleChange, placeholder, className }) => {
 	return (
 		<React.Fragment>
-			<div className="input-fields">
+			<input
+				name= {name}
+				onChange= {handleChange}
+				placeholder= {placeholder}
+				className= {className}
+				autocomplete="off"
+		/>
+			{/* <div className="input-fields">
 				<div className="input-time">
-					<div>
 						<input
 								name="displayMins"
 								onChange={handleChange}
 								placeholder="First Timer"
 								className="input"
+								autocomplete="off"
 						/>
-					</div>
-					<div>
 						<input
 								name="minsOri2"
 								onChange={handleChange}
 								placeholder="Second Timer"
 								className="input"
+								autocomplete="off"
 						/>
-					</div>
 				</div>
 				<div>
 					<input
@@ -29,9 +34,10 @@ const InputFields = ({ handleChange }) => {
 							onChange={handleChange}
 							placeholder="Laps"
 							className="input"
+							autocomplete="off"
 					/>
 				</div>
-			</div>
+			</div> */}
 		</React.Fragment>
 	);
 };

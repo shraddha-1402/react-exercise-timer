@@ -125,6 +125,7 @@ class App extends React.Component {
       || this.state.minsOri2 > 0) { // 1st exists
       let tempId = setInterval(this.decrement, 1000);
       this.setState({
+        showPause: true,
         timerId: tempId
       })
       console.log("inside setTimer");
@@ -139,15 +140,27 @@ class App extends React.Component {
               displayMins={this.state.displayMins}
               displaySecs={this.state.displaySecs}
             /> 
-        <InputFields handleChange={this.handleChange} />
+        <InputFields 
+          name={"displayMins"} 
+          handleChange={this.handleChange} 
+          placeholder={"First Timer"}
+          className={"input"}
+        />
+        <InputFields 
+          name={"minsOri2"} 
+          handleChange={this.handleChange} 
+          placeholder={"Second Timer"}
+          className={"input"}
+        />
+        <InputFields 
+          name={"times"} 
+          handleChange={this.handleChange} 
+          placeholder={"Laps"}
+          className={"input"}
+        />
         {!this.state.showPause && <button
           className="start-button"
-          onClick={()=> {
-            this.startTimer()
-            this.setState({
-              showPause: true
-              })
-          } }>
+          onClick={()=>this.startTimer()}>
           Start
         </button>}
         {this.state.showPause && <button

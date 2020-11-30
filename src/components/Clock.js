@@ -8,7 +8,7 @@ const Clock = ({
 }) => {
     return (
         <div className={cssClass}>
-            {displayMins} : {displaySecs}
+            {displayMins}:{displaySecs}
         </div>
     )
 }
